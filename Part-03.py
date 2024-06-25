@@ -1,7 +1,7 @@
 num1 = "one"
 num2 = 2.1
 
-# print(num1 + num2)
+print(num1 + num2)
 # Will result in an error saying that you can't concatenate a string to a floating point number
 
 num1 = "1"
