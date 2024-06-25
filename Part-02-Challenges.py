@@ -73,5 +73,80 @@ print(exampleStripped + " gets stripped down to become " + strippedExample)
 
 
 
-# 6. Use the upper() method:
- 
+
+# 6. Use the upper() method to convert a string into all uppercase letters:
+Ryan5 = '"If he\'s in, I\'m out!"'
+print("""
+      
+__________________________________
+Example of using the upper method:
+__________________________________""")
+allCaps = Ryan5.upper()
+print(allCaps)
+
+
+
+
+# 7. Use the "in" or "not" in keyword to check whether or not a particular phrase or character is present in a string:
+print("""
+      
+___________________________________________________________________
+Checking whether the word 'henchman' is within the string2 variable:
+___________________________________________________________________""")
+
+print("henchman" in string2)
+
+# ----------------------------------
+
+print("""
+      
+___________________________________________________________________
+Print confirmation only if the word 'henchman' is within the string2 variable:
+___________________________________________________________________""")
+
+if "henchman" in string2: print("Yes, Ryan mentioned a henchman when describing the plan")
+
+# ----------------------------------
+
+print("""
+      
+_______________________________________________________________
+Check whether the word 'out' is NOT within the string2 variable:
+_______________________________________________________________""")
+
+print("out" not in string2)
+
+# ----------------------------------
+
+print("""
+      
+____________________________________________________________________________
+Print confirmation only if the word 'out' is NOT within the string2 variable:
+____________________________________________________________________________""")
+
+if "out" not in string2: print("At the beginning, all of the Ryans said they were in. In the string2 variable, none said that they were out.")
+
+
+
+
+# 8. Concatenate a string:
+print("""
+      
+_____________________
+Concatenating strings:
+_____________________""")
+string3 = "Hello!"
+print(string1 + " " + string3)
+RyanGreeting = '"' + string1 + ' '  + string3 +'"'
+print(RyanGreeting)
+
+
+
+
+# 9. Use an escape character:
+print("""
+      
+________________________
+About escape characters:
+________________________""")
+print("✅ See lines 66 and 78 of the code for this page to see examples of using the \ escape character")
