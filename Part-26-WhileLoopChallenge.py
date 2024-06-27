@@ -19,7 +19,7 @@ while brokenLoop < 11:
 
 
 print("--------------------------")
-# 3. Use the "continue" statement within the while loop to skip over an iteration:
+# 3. Use the "continue" statement within a while loop to skip over an iteration:
 while skipFive < 10:
     skipFive += 1
     if skipFive == 5: continue
@@ -27,10 +27,9 @@ while skipFive < 10:
 
 
 print("--------------------------")
-# 4. Use the "else" statement within the while loop:
+# 4. Use the "else" statement within a while loop:
 while elseCounting < 11:
     print(elseCounting)
     elseCounting += 1
 else:
     print("...We have reached the number 10. Counting is done.")
-    
