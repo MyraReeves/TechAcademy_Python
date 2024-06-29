@@ -6,3 +6,7 @@ def subtractFunction(x, y):
 
 
 print(subtractFunction.__doc__)
+
+
+
+# Methods with two prefix and suffix underscores on either side are called Dunder Methods, which is short for "double under."  Sometimes, they are also called "magic methods" because they don't need to be called directly.
