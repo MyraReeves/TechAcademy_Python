@@ -17,15 +17,15 @@ import Part_49_DunderMethods1
 
 
 
-# __main__ is a built-in dunder method that is the module script being specifically ran
+# __main__ is the module script being ran (i.e this file that is being written in) instead of any imported module
 
 
 
 if __name__ == "__main__":
-    # Call the function created above inside this script file:
+    # Call the function that was created above inside this script file:
     print("First, I am running code from {}".format( printApp_Part2() ) )
     # Since we're calling this function from inside the same file it was created in instead of remotely, instead of showing the name of this file being currently typed in this will show "__main__" because it is the very module being run!
 
-    # Call code from the imported module file:
+    # Call the code from the imported module file (i.e. tell it to go to the module file name and then the desired function inside it):
     print("And now, instead, I am running code from {}".format( Part_49_DunderMethods1.printApp() ) )
     # Since this module is saved in a different, remote file, when we call on it the __name__ dunder will show that other file name
