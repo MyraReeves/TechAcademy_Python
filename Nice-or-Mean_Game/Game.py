@@ -3,7 +3,8 @@
 #
 # Authors: Daniel A. Christie, with modifications made by Myra Reeves
 #
-# Purpose:
+# Purpose:  School assignment to demonstrate passign variables from function to function, while coding a functional game.
+
 
 
 # Start the game with all parameters equaling zero as the defaults:
@@ -53,7 +54,6 @@ def nice_mean(nice, mean, userName):
             print ("\nThe stranger glares at you menacingly and storms off! 👿")
             mean = (mean+1)
             stop = False
-        # else: print('\nInvalid entry!  Please answer using only either the word "nice" or the word "mean"')
     score(nice, mean, userName) # pass the values of nice, mean, and the userName into the score function
 
 
@@ -88,7 +88,7 @@ def lose(nice, mean, userName):
 
 # Receive the current values of nice, mean, and userName
 def win(nice, mean, userName):
-    print("\n🎉 Great job being a good person, {}! 🎉 \nThe game has ended because you've made so many new friends! \n🏆".format(userName))
+    print("\n🎉 Great job being a good person, {}! 🎉 \nThe game has ended after you've made so many new friends that you win the local popularity contest! \n🏆".format(userName))
     # Ask whether the user wants to play the game again.  Be sure to pass off the current variable values.
     playAgain(nice, mean, userName)
 
