@@ -34,9 +34,9 @@ for file in os.listdir(desiredDirectory):
 
 # Use the getmtime() method from the OS module to find the latest date that each text file was created or modified:
 import time
-modification_time = os.path.getmtime([textDocuments])
+modification_time = os.path.getmtime(textDocuments[0])
 # convert the time in seconds since epoch into local time
 local_time = time.ctime(modification_time)
-print("Last modification time(Local time):", local_time)
+print("\nLast modification time (Local time):", local_time)
 
 # Print to the console a list of each file ending with a ".txt" file extension, and its corresponding mtime:
