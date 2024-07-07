@@ -3,7 +3,7 @@
 class User:
     # Define the attributes of the class, and assign variables names to each. As part of the definition, it is necessary to give default values to each.  The values can change so long as you provide methods to do so.
     name = "No name provided"
-    email = ""
+    email = " "
     password = "1234abcd"
     account = 0
 
