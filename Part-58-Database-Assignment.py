@@ -12,6 +12,9 @@
 import sqlite3
 
 
+# Create a blank database named "Step223_Assignment" by storing a token of the connection to the database within a variable named "connection"
+connection = sqlite3.connect('Step223_Assignment.db')
+
 
 with connection:
     # Cursor object:
