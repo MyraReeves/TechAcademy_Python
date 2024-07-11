@@ -40,12 +40,13 @@ fileList = ('information.docx', 'Hello.txt', 'myImage.png', 'myMovie.mpg', 'Worl
 
 # Creating a For loop that analyzes that tuple of file names and finds only those that end with ".txt", then splits those names we want into being one-element tuples:
 for x in fileList:
-    if x.endswith('.txt'):
+    if x.endswith('txt'):
         with connection:
             cursor = connection.cursor()
-            cursor.execute("INSERT INTO more_people (fName) VALUES (?)", (x,))
+            cursor.execute("INSERT INTO text_file_name (column_fileName) VALUES (?)", (x,))
+                    # The values for each row will be one file name out of the tuple.  Therefore (x,) will denote a one element tuple for each file name ending with .txt
             print(x)
-        # The values for each row will be one name out of the tuple.  Therefore (x,) will denote a one element tuple for each name ending with y.
+
 
 
 
