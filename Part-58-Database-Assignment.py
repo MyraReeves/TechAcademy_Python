@@ -34,7 +34,6 @@ with connection:
 
 
 
-
 # Provided tuple of file names:
 fileList = ('information.docx', 'Hello.txt', 'myImage.png', 'myMovie.mpg', 'World.txt', 'data.pdf', 'myPhoto.jpg')
 
@@ -46,7 +45,6 @@ for x in fileList:
             cursor.execute("INSERT INTO text_file_name (column_fileName) VALUES (?)", (x,))
                     # The values for each row will be one file name out of the tuple.  Therefore (x,) will denote a one element tuple for each file name ending with .txt
             print(x)
-
 
 
 
