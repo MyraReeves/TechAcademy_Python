@@ -8,22 +8,28 @@
 # The list of qualifying text file names should be printed to the console
 # --------------------------------------------------------------------------------------------------
 
+
 # Connecting to sqlite:
 import sqlite3
+
 
 
 # Create a blank database named "Step223_Assignment" by storing a token of the connection to the database within a variable named "connection"
 connection = sqlite3.connect('Step223_Assignment.db')
 
 
+
+# Until the session is closed, while the connection token is open...
 with connection:
-    # Cursor object:
+
+    #  # Invoke a cursor variable to operate on the database when we want to execute commands:
     cursor = connection.cursor()
 
     # Create a "text file name" table, if one doesn't already exist:
-    cursor.execute("CREATE TABLE IF NOT EXISTS text_file_name(ID INTEGER PRIMARY KEY AUTOINCREMENT,\
-                   fileName TEXT)")
+    cursor.execute("CREATE TABLE IF NOT EXISTS text_file_name(ID INTEGER PRIMARY KEY AUTOINCREMENT, \
+                    column_fileName TEXT)")
     
+    # Commit these changes to the database
     connection.commit()
 
 
