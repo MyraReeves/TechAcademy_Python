@@ -47,6 +47,14 @@ class ParentWindow(Frame):
         self.textBox_LastName = Entry(self.master, text=self.variableLastName, font=("Helvetica", 16), fg="black", bg="lightyellow")
         self.textBox_LastName.grid(row=1, column=1, padx=(0,0), pady=(20,0))
 
+        # Note: To make an entry span two columns of space, add in ", colspan=2" after "column".  Leaving it blank automatically tells the program that the column span is the size of only one column.
+
+
+        # Add a submit button to the page. Place it on the main window self master. On the face of the button have it say "Submit"
+        self.buttonSubmit = Button(self.master, text="Submit", width=10, font=("Courier", 16), fg="pink", bg="black")
+        # Place the button onto the page using the grid.  Have it stick to the upper right of its cell using NorthEast
+        self.buttonSubmit.grid(row=2, column=1, padx=(0,0), pady=(30,0), sticky=NE)
+
 
 
 
