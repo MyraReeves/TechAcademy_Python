@@ -51,9 +51,15 @@ class ParentWindow(Frame):
 
 
         # Add a submit button to the page. Place it on the main window self master. On the face of the button have it say "Submit"
-        self.buttonSubmit = Button(self.master, text="Submit", width=10, font=("Courier", 16), fg="pink", bg="black")
+        self.buttonSubmit = Button(self.master, text="Submit", width=10, font=("Courier", 16), fg="green", bg="lightgreen")
         # Place the button onto the page using the grid.  Have it stick to the upper right of its cell using NorthEast
         self.buttonSubmit.grid(row=2, column=1, padx=(0,0), pady=(30,0), sticky=NE)
+
+        # Add a CANCEL button to the page. Place it on the main window self master. On the face of the button have it say "Submit"
+        self.buttonCancel = Button(self.master, text="CANCEL", width=10, font=("Courier", 16), fg="red", bg="pink")
+        # Place the button onto the page using the grid.  Have it stick to the upper right of its cell using NorthEast
+        self.buttonCancel.grid(row=2, column=0, padx=(20,0), pady=(30,0), sticky=NE)
+
 
 
 
