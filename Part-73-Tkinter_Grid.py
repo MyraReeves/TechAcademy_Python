@@ -38,6 +38,12 @@ class ParentWindow(Frame):
         self.labelLastName.grid(row=1, column=0, padx=(33,0), pady=(20,0))
 
 
+        # Create a label to display whichever first and last name that are entered at the time of hitting the submit button:
+        self.labelDisplay = Label(self.master, text='', font=("Courier", 16), fg="white", bg="darkred")
+        self.labelDisplay.grid(row=3, column=1, padx=(0,0), pady=(50,0))
+
+
+
         # Instructions to build a textbox by instantiating the single line Entry() class widget and then configuring it by telling it to be placed on self master, setting the text content, setting the font tuple of style and size, setting the foreground font color, and setting the background color of the textbox.
         self.textBox_FirstName = Entry(self.master, text=self.variableFirstName, font=("Helvetica", 16), fg="black", bg="lightblue")
         # Paint the geometry object onto a very specific location of the form/window. Remember to set the margins around the text box using pad() for the x-axis and y-axis:
@@ -51,16 +57,26 @@ class ParentWindow(Frame):
 
 
         # Add a submit button to the page. Place it on the main window self master. On the face of the button have it say "Submit"
-        self.buttonSubmit = Button(self.master, text="Submit", width=10, font=("Courier", 16), fg="green", bg="lightgreen")
+        self.buttonSubmit = Button(self.master, text="Submit", width=10, font=("Courier", 16), fg="green", bg="lightgreen", command=self.submit)
         # Place the button onto the page using the grid.  Have it stick to the upper right of its cell using NorthEast
         self.buttonSubmit.grid(row=2, column=1, padx=(0,0), pady=(30,0), sticky=NE)
 
         # Add a CANCEL button to the page. Place it on the main window self master. On the face of the button have it say "Submit"
-        self.buttonCancel = Button(self.master, text="CANCEL", width=10, font=("Courier", 16), fg="red", bg="pink")
+        self.buttonCancel = Button(self.master, text="CANCEL", width=10, font=("Courier", 16), fg="red", bg="pink", command=self.cancel)
         # Place the button onto the page using the grid.  Have it stick to the upper right of its cell using NorthEast
         self.buttonCancel.grid(row=2, column=0, padx=(20,0), pady=(30,0), sticky=NE)
 
 
+    # Create a submit method function:
+    def submit(self):
+        firstName = self.variableFirstName.get()
+        lastName = self.variableLastName.get()
+        # Generate a label showing the values of firstName and lastName, by dynamically changing the labelDisplay cell using the built-in config()method to change the text content
+        self.labelDisplay.config(text='Hello there, {} {}!'.format(firstName, lastName))
+
+    # Create a CANCEL method function to close the window using the built-in destroy() method:
+    def cancel(self):
+        self.master.destroy()
 
 
 
