@@ -55,6 +55,9 @@ class ParentWindow(Frame):
 
         # Note: To make an entry span two columns of space, add in ", colspan=2" after "column".  Leaving it blank automatically tells the program that the column span is the size of only one column.
 
+        # Note: To make an entry span multiple rows of space, add in ", rowspan=#" after "row".  Leaving it blank automatically tells the program that the row span is the size of only one column.
+
+
 
         # Add a submit button to the page. Place it on the main window self master. On the face of the button have it say "Submit"
         self.buttonSubmit = Button(self.master, text="Submit", width=10, font=("Courier", 16), fg="green", bg="lightgreen", command=self.submit)
