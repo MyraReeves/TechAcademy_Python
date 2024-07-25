@@ -55,7 +55,7 @@ class ParentWindow(Frame):
 
         # Note: To make an entry span two columns of space, add in ", colspan=2" after "column".  Leaving it blank automatically tells the program that the column span is the size of only one column.
 
-        # Note: To make an entry span multiple rows of space, add in ", rowspan=#" after "row".  Leaving it blank automatically tells the program that the row span is the size of only one column.
+        # Note: To make an entry span multiple rows of space, add in ", rowspan=" with the number of rows after "row".  Leaving it blank automatically tells the program that the row span is the size of only one row.
 
 
 
