@@ -2,20 +2,13 @@
 
 # 1. This class should make use of a private attribute or function:
 
-# Creating a class for student
-class Student:
-    name = "April Glass"
-    __id = 1234567
+# Creating a class:
+class MyClass:
+    def _private_method(self):
+        print("This is my private method")
 
-    # Method for printing the private attribute:
-    def printId(self):
-        print(f"The id # of this student is: {self.__id}")
-
-Glass = Student()
-print(f"The name of this student is: {Glass.name}")
-
-# Accessing the private attribute using getter method:
-Glass.printId()
+# Creating an object from that class:
+object1 = MyClass()
 
 # This class should make use of a protected attribute or function.
 
