@@ -12,8 +12,7 @@ button3 = Button(window, text="Three", bg = "lightblue", font=("Roman", 18))
 button4 = Button(window, text="Four", bg="pink", font=("Terminal", 12))
 
 
-# The above would create a blank window without further instruction.  Use "pack" to tell the widget to pack itself into its parent (which is "window").  The window will then automatically shrink to fit only the size of the button(s).  The default positioning for them will be to TOP stack them vertically in the order in which they were packed in.
-# Use "side = LEFT" to position them a horizontal row from left to right.
+# The above would create a blank window without further instruction.  Use "pack" to tell each widget to pack itself into its parent (which is "window").  It will be packed against either the parent's wall or the previously added widget that has the same packing.  The window will automatically shrink to fit only the size of the widget(s) [in this case, the label and buttons].  The default positioning for them will be to TOP stack them vertically in the order in which they were packed inside.  You can use "side = LEFT" to position them in a horizontal row from left to right instead.
 # Use "padx" to add padding to the left/right, and "pady" to add padding to the top/bottom.
 textLabel.pack(side=TOP, padx = 10, pady = 10)
 
