@@ -24,3 +24,8 @@ button4.pack(side=LEFT, padx = 10, pady = 10)
 
 # If "side = RIGHT" was used, then that would arrange them in a horizontal row from right to left.
 # If "side = BOTTOM" was used, then that would arrange them in a vertical stack from the bottom up.
+
+
+
+
+# Note:  In addition to pack() and grid(), there is place() method which is available for all standard widgets, which is the simplest of the three general geometry managers in Tkinter and allows you explicitly set the position and size of a window (either in absolute terms, or relative to another window), but it is usually not a good idea to use place() for ordinary window and dialog layouts.

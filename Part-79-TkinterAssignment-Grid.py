@@ -22,3 +22,6 @@ button2.grid(row=1, column=1)
 button3.grid(row=2, column=0, sticky=W)       # By default, the widgets will be centered inside their cells. Therefore, "sticky" and a compass position (north, east, south, or west) is used to position the widget inside of a cell.  In this case, it positions the "three" button to the left side of its cell instead of it being centered.
 button4.grid(row=3, column=1)
 
+
+
+# Note:  In addition to pack() and grid(), there is place() method which is available for all standard widgets, which is the simplest of the three general geometry managers in Tkinter and allows you explicitly set the position and size of a window (either in absolute terms, or relative to another window), but it is usually not a good idea to use place() for ordinary window and dialog layouts.
