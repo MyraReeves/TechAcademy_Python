@@ -8,7 +8,7 @@
 # 2
 # 3
 
-# This doesn't need to use backwardsList variable because you can simply ask for a range that is a number one beyond the last number you want and Python will start counting at zero.
+# You can simply ask for a range that is a number one beyond the last number you want and Python will start counting at zero.
 x = range(4)
 
 for n in x:
