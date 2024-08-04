@@ -4,12 +4,14 @@ from tkinter import messagebox
 import tkinter.filedialog
 import os
 import shutil
+from datetime import datetime, timedelta
+
 
 
 class ParentWindow (Frame):
     def __init__(self, master):
         Frame.__init__(self)
-        self.master.title("Transfer All Files To New Folder")
+        self.master.title("Transfer Files To New Folder")
 
         # "Select Source" button:
         self.sourceDirectoryButton = Button(text="Source Folder", width=20, bg="papayawhip", command=self.sourceDir)
@@ -28,12 +30,16 @@ class ParentWindow (Frame):
         self.destinationDirectoryEntry.grid(row=1, column=1, columnspan=2, padx=(20, 10), pady=(15, 10))        # pady is the same as the button to ensure they will line up, and padx is the same as File Transfer button to line up their left edges.
 
         # File Transfer button:
-        self.transferButton = Button(text="Transfer All Files", width = 20, height=2, bg="palegreen", command=self.transferFiles)
+        self.transferButton = Button(text="Transfer ALL Files", width = 15, height=2, bg="palegreen", command=self.transferFiles)
         self.transferButton.grid(row=2, column=1, padx=(20, 0), pady=(10, 25), sticky=W)        # padx is the same as the Entry display areas to ensure its left edge lines up vertically underneath
 
+        # Daily Update button:
+        self.updateButton = Button(text="24 Hour Update", width = 15, height=2, fg="white", bg="darkslategrey", command=self.newFileCheck)
+        self.updateButton.grid(row=2, column=1, pady=(10, 25), sticky=E)
+
         # Exit button:
-        self.exitButton = Button(text="Exit", width=8, height=2, fg="darkred", bg="pink", command=self.exitProgram)
-        self.exitButton.grid(row=2, column=2, padx=(0, 10), pady=(10, 25), sticky=E)
+        self.exitButton = Button(text="Exit", width=6, height=2, fg="darkred", bg="pink", font=("Terminal", 9), command=self.exitProgram)
+        self.exitButton.grid(row=2, column=2, padx=(0, 10), pady=(10, 25), sticky=SE)
 
 
 
@@ -67,12 +73,19 @@ class ParentWindow (Frame):
         # Get the list of files currently inside the source folder:
         source_files = os.listdir(source)
 
-        # Move each file from the source to the destination folder:
-        for iteration in source_files:
-            shutil.move(source + '/' + iteration, destination)
-            # Confirm file transfer in console:
-            print('\n ✔️ ' + iteration + ' successfully transferred to \n' + destination)
+        if messagebox.askokcancel("Confirmation Needed", "WARNING: This action will result in the chosen source folder becoming completely empty.  It will transfer to the destination folder ALL of the files currently inside of the source folder, regardless of their time stamps. \n\nContinue?", icon='warning'):
+            # Move each file from the source to the destination folder:
+            for iteration in source_files:
+                shutil.move(source + '/' + iteration, destination)
+                # Confirm file transfer in console:
+                print('\n ✔️ ' + iteration + ' successfully transferred to \n' + destination)
+            
+            # Show confirmation message box when the transfer is complete:
+            messagebox.showinfo("Completed", "All files have been successfully moved")
 
+
+
+    
 
     # Function to exit program:
     def exitProgram(self):
