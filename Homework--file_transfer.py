@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 class ParentWindow (Frame):
     def __init__(self, master):
         Frame.__init__(self)
-        self.master.title("Transfer Files To New Folder")
+        self.master.title("Transfer Files")
 
         # "Select Source" button:
         self.sourceDirectoryButton = Button(text="Source Folder", width=20, bg="papayawhip", command=self.sourceDir)
@@ -85,6 +85,21 @@ class ParentWindow (Frame):
 
 
 
+    # Function to check for files less than 24 hours old and transfer only those:
+    def newFileCheck (self):
+        twentyfourHoursAgo = datetime.utcnow() - timedelta(hours=24)    # "utcnow" gives the CURRENT Coordinated Universal Time
+        source = self.sourceDirectoryEntry.get()
+
+        # Get the list of files currently inside the source folder:
+        sourceFiles = os.listdir(source)
+
+        if messagebox.askokcancel("Info", "This will only transfer files created or modified within the past 24 hours \n\nContinue?", icon='info'):
+            for iteration in sourceFiles:
+                # Assign to a variable the time stamps of the last modification to each file in the list. "utcfromtimestamp" gives the Coordinated Universal Time of when a file was last modified
+                modifiedTime = datetime.utcfromtimestamp(os.path.getmtime(iteration))
+
+                if modifiedTime > twentyfourHoursAgo:
+                    print('The following file was modified less than 24 hours ago \n' + iteration)
     
 
     # Function to exit program:
