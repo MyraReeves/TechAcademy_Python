@@ -87,7 +87,7 @@ class ParentWindow (Frame):
 
     # Function to check for files less than 24 hours old and transfer only those:
     def newFileCheck (self):
-        twentyfourHoursAgo = datetime.utcnow() - timedelta(hours=24)    # "utcnow" gives the CURRENT Coordinated Universal Time
+        twentyfourHoursAgo = datetime.now() - timedelta(hours=24)    # "now()" gives the current time using the user's clock
         source = self.sourceDirectoryEntry.get()
 
         # Get the list of files currently inside the source folder:
@@ -95,8 +95,8 @@ class ParentWindow (Frame):
 
         if messagebox.askokcancel("Info", "This will only transfer files created or modified within the past 24 hours \n\nContinue?", icon='info'):
             for iteration in sourceFiles:
-                # Assign to a variable the time stamps of the last modification to each file in the list. "utcfromtimestamp" gives the Coordinated Universal Time of when a file was last modified
-                modifiedTime = datetime.utcfromtimestamp(os.path.getmtime(iteration))
+                # Assign to a variable the time stamps of the last modification to each file in the list. "fromtimestamp" uses the local time of the users computer for when a file was last modified
+                modifiedTime = datetime.fromtimestamp(os.path.getmtime(iteration))
 
                 if modifiedTime > twentyfourHoursAgo:
                     print('The following file was modified less than 24 hours ago \n' + iteration)
