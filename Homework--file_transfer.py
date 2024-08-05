@@ -101,10 +101,11 @@ class ParentWindow (Frame):
 
                 if modifiedTime > twentyfourHoursAgo:
                     shutil.move(source + '/' + iteration, destination)
-                    # Confirm the function worked correctly by printing the mtimes of the moved files into the console:
-                    print('\nThe following file has been moved to the new folder: \n', iteration, "\nbecause the file's last modified date & time was: ", modifiedTime)
 
-            # Show a confirmation message when the transfer is complete:
+                    # Allow devs visual confirm that the function worked correctly by printing the mtimes of the moved files into the console:
+                    print('\nThe following file has been moved to the new folder: \n' + iteration, "\nTimestamp of when it was last modified: ", modifiedTime)
+
+            # Show a confirmation message to the user when the transfer is complete:
             messagebox.showinfo("TASK COMPLETE", "The files were successfully moved to the selected destination folder")
     
 
