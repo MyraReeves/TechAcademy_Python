@@ -80,7 +80,7 @@ class ParentWindow (Frame):
                 # Confirm file transfer in console:
                 print('\n ✔️ ' + iteration + ' successfully transferred to \n' + destination)
             
-            # Show confirmation message box when the transfer is complete:
+            # Show a confirmation message box when the transfer is complete:
             messagebox.showinfo("Completed", "All files have been successfully moved")
 
 
@@ -89,6 +89,7 @@ class ParentWindow (Frame):
     def newFileCheck (self):
         twentyfourHoursAgo = datetime.now() - timedelta(hours=24)    # "now()" gives the current time using the user's clock
         source = self.sourceDirectoryEntry.get()
+        destination = self.destinationDirectoryEntry.get()
 
         # Get the list of files currently inside the source folder:
         sourceFiles = os.listdir(source)
@@ -96,10 +97,15 @@ class ParentWindow (Frame):
         if messagebox.askokcancel("Info", "This will only transfer files created or modified within the past 24 hours \n\nContinue?", icon='info'):
             for iteration in sourceFiles:
                 # Assign to a variable the time stamps of the last modification to each file in the list. "fromtimestamp" uses the local time of the users computer for when a file was last modified
-                modifiedTime = datetime.fromtimestamp(os.path.getmtime(iteration))
+                modifiedTime = datetime.fromtimestamp(os.path.getmtime(source + '/' + iteration))
 
                 if modifiedTime > twentyfourHoursAgo:
-                    print('The following file was modified less than 24 hours ago \n' + iteration)
+                    shutil.move(source + '/' + iteration, destination)
+                    # Confirm the function worked correctly by printing the mtimes of the moved files into the console:
+                    print('\nThe following file has been moved to the new folder: \n', iteration, "\nbecause the file's last modified date & time was: ", modifiedTime)
+
+            # Show a confirmation message when the transfer is complete:
+            messagebox.showinfo("TASK COMPLETE", "The files were successfully moved to the selected destination folder")
     
 
     # Function to exit program:
