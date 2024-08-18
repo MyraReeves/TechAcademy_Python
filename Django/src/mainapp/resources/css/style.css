@@ -79,21 +79,21 @@ button_container {
     justify-content: center;
     text-align: center;
     display: inline-block;
-    width: 150px; /* button size */
+    width: 150px; /* controls button size by altering how much space this area takes up inside the container */
     margin: 2% 2% 2% 2%;
-    color: black;
-    padding: 5px 0px;
+    color: #02843a;
+    padding: 4px 0px;
     text-decoration: none;
     font-size: 14px;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
-    border: 2px solid silver;
+    border: 2px solid #02843a;
     border-radius: 5px;
 }
 
 .button1:hover {
-    background-color: #02843a;;
+    background-color: #02843a;
     color: white;
 }
 
