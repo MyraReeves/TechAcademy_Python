@@ -13,7 +13,7 @@
             <label for="username_id" id="registeredUsers">List of Registered Users:</label><br>
             <select id="username_id" name="menu" onChange="top.location.href=this.options[this.selectedIndex].value;">
                 {% for name in registered_users %}
-                    <option value="../{{ name.pk }}/details/" {{ name.Username }}></option>
+                    <option value="../{{ name.pk }}/details/"> {{ name.Username }}</option>
                 {% endfor %}
             </select>
 
