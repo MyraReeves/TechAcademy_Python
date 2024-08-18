@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}My Website{% endblock %}
+
+{% block header %}Greetings!{% endblock %}
+
+{% block mainContent %}
+
+    <h2 style='color: purple;'>👋 Hi there</h2>
+    <h1 style='color: purple;'> &nbsp; HELLO!</h1>
+    <p>Welcome to my world, {{ userKey | title }}.</p>
+    <p>How are you doing today?</p>
+
+<h3 style='text-decoration-line: underline;'>The following are a few YouTube comedians who usually film only one actor to portray all their characters:</h3>
+    <ul>
+        {% for name in comedians %}
+            {% if name == "Ryan George" %}
+                <li style='color: yellow;'>"Hi there HELLO!" {{ name }}</li>
+            {% else %}
+                <li>{{ name }}</li>
+            {% endif %}
+        {% endfor %}
+
+<h4 style="text-decoration: underline;">Registered users:</h4>
+    <ul style="color: #7bfcf3;">
+        {% for name in registered_users %}
+        <li>{{ name.Username }}</li>
+        {% endfor %}
+    </ul>
+    </ul>
+
+
+{% endblock %}
