@@ -20,7 +20,7 @@ class ParentWindow(Frame):
         webbrowser.open_new_tab("index.html")
 
 
-
+# TO-DO: Create an option for users to enter custom text themselves.  There should be two buttons - one for the default and one for the user-generated custom text.  
 
 
 
