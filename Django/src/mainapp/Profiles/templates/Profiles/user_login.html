@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}User LogIn{% endblock %}
+
+{% block header %}Welcome back!  Log in below{% endblock %}
+
+{% block mainContent %}
+
+<div class="login_panel">
+    <form name="loginForm" method="post" action="">
+        <div class="formObject">
+            {% csrf_token %}
+            <label for="username_id" id="registeredUsers">List of Registered Users:</label><br>
+            <select id="username_id" name="menu" onChange="top.location.href=this.options[this.selectedIndex].value;">
+                {% for name in registered_users %}
+                    <option value="../{{ name.pk }}/details/" {{ name.Username }}></option>
+                {% endfor %}
+            </select>
+
+            <div class="button_container">
+                <a href=""><button type="button" class="button1">Log In</button></a>
+                <a href="{% url 'home' %}"><button type="button" class="button1">Back to Home</button></a>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+    <h2 style='color: lightyellow;'>Not yet registered?  Come join the fun!  We're all waiting for you!</h2>
+
+{% endblock %}
