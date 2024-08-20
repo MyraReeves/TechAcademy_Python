@@ -2,11 +2,13 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Profile
 from .forms import ProfileForm
 
+
 # Create your method views here.
 
 def username_list(request):
     users = Profile.objects.all()
     return render(request, 'Profiles/user_login.html', {'registered_users': users})
+
 
 def details(request, pk):
     pk = int(pk)
@@ -19,7 +21,16 @@ def details(request, pk):
             return redirect('username_list')
         else:
             print(form.errors)
-            
+
     else:
-        return render(request, 'Profiles/selected_profile.html', {'form':form})
-        
+        return render(request, 'Profiles/selected_profile.html', {'form': form})
+
+
+def delete(request, pk):
+    pk = int(pk)
+    item = get_object_or_404(Profile, pk=pk)
+    if request.method == 'POST':
+        item.delete()
+        return redirect('username_list')
+    context = {"item": item,}
+    return render(request, "Profile/confirmDelete.html", context)
