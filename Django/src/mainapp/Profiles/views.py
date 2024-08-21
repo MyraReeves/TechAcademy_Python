@@ -9,6 +9,8 @@ def username_list(request):
     users = Profile.objects.all()
     return render(request, 'Profiles/user_login.html', {'registered_users': users})
 
+# ____________________________________________________________________
+
 
 def details(request, pk):
     pk = int(pk)
@@ -25,6 +27,8 @@ def details(request, pk):
     else:
         return render(request, 'Profiles/selected_profile.html', {'form': form})
 
+# ____________________________________________________________________
+
 
 def delete(request, pk):
     pk = int(pk)
@@ -32,5 +36,19 @@ def delete(request, pk):
     if request.method == 'POST':
         item.delete()
         return redirect('username_list')
-    context = {"item": item,}
-    return render(request, "Profile/confirmDelete.html", context)
+    else:
+        context = {"item": item,}
+        return render(request, "Profile/confirmDelete.html", context)
+
+# ____________________________________________________________________
+
+
+def confirmed(request):
+    if request.method == 'POST':
+        # Create form:
+        form = ProfileForm(request.POST or None)
+        if form.is_valid():
+            form.delete()
+            return redirect('username_list')
+    else:
+        return redirect('username_list')
