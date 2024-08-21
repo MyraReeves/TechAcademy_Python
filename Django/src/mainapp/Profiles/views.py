@@ -38,7 +38,7 @@ def delete(request, pk):
         return redirect('username_list')
     else:
         context = {"item": item,}
-        return render(request, "Profile/confirmDelete.html", context)
+        return render(request, "Profiles/confirmDelete.html", context)
 
 # ____________________________________________________________________
 
@@ -52,3 +52,17 @@ def confirmed(request):
             return redirect('username_list')
     else:
         return redirect('username_list')
+
+# ____________________________________________________________________
+
+
+def createProfile(request):
+    form = ProfileForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('username_list')
+    else:
+        print(form.errors)
+        form = ProfileForm()
+    context = {'form': form,}
+    return render(request, 'Profiles/createProfile.html', context)
