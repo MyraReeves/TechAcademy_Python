@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Delete{% endblock %}
+
+{% block header %}Confirmation needed{% endblock %}
+
+{% block mainContent %}
+
+    <form method="POST" action=".">
+        {% csrf_token %}
+        <h2>Please confirm:</h2>
+        <p>Are you sure you wish to delete the profile for {{item.Username}}?</p>
+
+        {{item.as_p}}
+
+        <input type="submit" value="Yes, I am sure. DELETE it!" class="button1" style="color:red; background-color: black">
+        <a href="{% url 'users' %}"><button type="button" class="button1">Cancel</button> </a>
+    </form>
+
+{% endblock %}
