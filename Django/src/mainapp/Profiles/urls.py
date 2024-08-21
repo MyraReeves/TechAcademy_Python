@@ -8,4 +8,5 @@ urlpatterns = [
     path('users', views.username_list, name="users"),
     path('<int:pk>/details/', views.details, name="details"),
     path('<int:pk>/delete/', views.delete, name="delete"),
+    path('confirm_deletion/', views.confirmed, name="confirm"),
 ]
