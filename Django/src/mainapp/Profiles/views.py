@@ -35,7 +35,7 @@ def delete(request, pk):
     item = get_object_or_404(Profile, pk=pk)
     if request.method == 'POST':
         item.delete()
-        return redirect('username_list')
+        return redirect('users')
     else:
         context = {"item": item,}
         return render(request, "Profiles/confirmDelete.html", context)
@@ -49,9 +49,9 @@ def confirmed(request):
         form = ProfileForm(request.POST or None)
         if form.is_valid():
             form.delete()
-            return redirect('username_list')
+            return redirect('users')
     else:
-        return redirect('username_list')
+        return redirect('users')
 
 # ____________________________________________________________________
 
