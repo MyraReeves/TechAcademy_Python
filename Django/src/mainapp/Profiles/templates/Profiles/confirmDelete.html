@@ -2,13 +2,13 @@
 
 {% block title %}Delete{% endblock %}
 
-{% block header %}Confirmation needed{% endblock %}
+{% block header %}👇 Confirmation needed 👇{% endblock %}
 
 {% block mainContent %}
 
     <form method="POST" action=".">
         {% csrf_token %}
-        <h2>Please confirm:</h2>
+        <h2 style="color: red;">Please confirm:</h2>
         <p>Are you sure you wish to delete the profile for {{item.Username}}?</p>
 
         {{item.as_p}}
