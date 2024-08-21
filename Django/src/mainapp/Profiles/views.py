@@ -60,7 +60,7 @@ def createProfile(request):
     form = ProfileForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect('username_list')
+        return redirect('users')
     else:
         print(form.errors)
         form = ProfileForm()
