@@ -65,4 +65,4 @@ def createProfile(request):
         print(form.errors)
         form = ProfileForm()
     context = {'form': form,}
-    return render(request, 'Profiles/createProfile.html', context)
+    return render(request, 'Profiles/create_profile.html', context)
