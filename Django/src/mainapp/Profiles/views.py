@@ -20,7 +20,7 @@ def details(request, pk):
         if form.is_valid():
             form2 = form.save(commit=False)
             form2.save()
-            return redirect('username_list')
+            return redirect('users')
         else:
             print(form.errors)
 
