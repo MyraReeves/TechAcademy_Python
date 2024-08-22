@@ -17,7 +17,7 @@ class UniversityClass(models.Model):
         return display_course.format(self)
 
 
-# Sets exact text to display in browser
-# Removes the added 's' that Django appends to model names in the browser
-class Meta:
-    verbose_name_plural = "University Classes"
+    # Sets exact text to display in browser
+    # Removes the added 's' that Django appends to model names in the browser
+    class Meta:
+        verbose_name_plural = "University Classes"
