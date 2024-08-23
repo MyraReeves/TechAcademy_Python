@@ -1,10 +1,18 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import AccountForm, TransactionForm
+from .models import Account, Transaction
 
 
 # Create your views here.
 def home(request):
-    return render(request, 'checkbook/index.html')
+    form = TransactionForm(data=request.POST or None)
+    if request.method == 'POST':
+        # Retrieve which account the user wants to view...
+        pk = request.POST['account']
+        # ...and call the balance function to render that primary key's Balance Sheet
+        return balance(request, pk)
+    else:
+        return render(request, 'checkbook/index.html', {'form': form})
 
 
 def create_account(request):
