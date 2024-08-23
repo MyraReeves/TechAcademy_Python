@@ -13,6 +13,8 @@ def create_account(request):
         if form.is_valid():
             form.save()
             return redirect('index')
+        else:
+            print(form.errors)
     else:
         # Save the content as a dictionary onto the AccountForm template and add the content of the form to the page:
         content = {'form': form}
@@ -24,4 +26,12 @@ def balance(request):
 
 
 def transaction(request):
-    return render(request, 'checkbook/AddTransaction.html')
+    form = TransactionForm(data=request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+        else:
+            print(form.errors)
+    else:
+        return render(request, 'checkbook/AddTransaction.html', {'form': form})
