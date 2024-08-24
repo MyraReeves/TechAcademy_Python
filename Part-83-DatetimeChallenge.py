@@ -12,17 +12,21 @@ from zoneinfo import ZoneInfo
 # Create a script that will find out the current times in the Portland HQ and NYC and London branches.
 PortlandHQ = datetime.now()
 PortlandHour_Minute = (PortlandHQ.strftime("%H:%M:%S on %B %d"))
-Portland_AM_PM = (PortlandHQ.strftime("%I %p"))
+Portland_AM_PM = (PortlandHQ.strftime("%#I %p"))            # In Windows specifically, the # symbol strips any leading zeros from before the hour.
+
 
 NYC = datetime.now(tz=ZoneInfo('America/New_York'))
 NewYorkCity = (NYC.strftime("%H:%M:%S on %B %d"))
-NewYork_AM_PM = (NYC.strftime("%I %p"))
+NewYork_AM_PM = (NYC.strftime("%#I %p"))            # If working in Linux, a - symbol is needed instead of the # , but that - symbol would throw an error in Windows.
 
 LondonOffice = datetime.now(tz=ZoneInfo('Europe/London'))
 London = (LondonOffice.strftime("%H:%M:%S on %B %d"))
-London_AM_PM = (LondonOffice.strftime("%I %p"))
+London_AM_PM = (LondonOffice.strftime("%#I %p"))
 
-# Then, compare that time with each branch's hours to see if they are open or closed by checking for if between 9 AM and 5 PM:
+
+
+
+# Compare each branch's current time to their operating hours to see if they are open or closed by checking for if between 9 AM and 5 PM:
 if int(PortlandHQ.strftime("%H")) < 9:
     Port_open_close = "CLOSED"
 elif int(PortlandHQ.strftime("%H")) >= 18:
@@ -47,6 +51,9 @@ else:
     London_open_close = "OPEN"
 
 
+
+
+
 # Print out to the screen the three branches and whether they are open or closed.
 print("\nAll of our branches are open from 9 AM to 5 PM in their respective time zones.")
 
@@ -54,7 +61,7 @@ print("\nOn a 24 hour clock, the time at headquarters in Portland, Oregon, is cu
 print("Portland HQ is " + Port_open_close + " now, because it is currently " + Portland_AM_PM + " there.")
 
 print("\nOn a 24 hour clock, the time in New York City is currently: ", NewYorkCity)
-print("The branch in NYC is " + NYC_open_close + " now, because it is currently " + NewYork_AM_PM + " there.")
+print("The branch in New York City is " + NYC_open_close + " now, because it is currently " + NewYork_AM_PM + " there.")
 
 print("\nOn a 24 hour clock, the current time in London is: ", London)
 print("The London branch is " + London_open_close + " now, because it is currently " + London_AM_PM + " there.")
