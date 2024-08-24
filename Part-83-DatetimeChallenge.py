@@ -6,11 +6,10 @@
 
 # Import the datetime module and any others to aid in time zone calculations.
 import datetime
-import zoneinfo
-from datetime import datetime, timedelta, timezone
+from datetime import datetime
 from zoneinfo import ZoneInfo
 
-# Create a script that will find out the current times in the Portland HQ and NYC and London branches. Then, compare that time with each branch's hours to see if they are open or closed.
+# Create a script that will find out the current times in the Portland HQ and NYC and London branches.
 PortlandHQ = datetime.now()
 PortlandHour_Minute = (PortlandHQ.strftime("%H:%M:%S on %B %d"))
 Portland_AM_PM = (PortlandHQ.strftime("%I %p"))
@@ -23,47 +22,41 @@ LondonOffice = datetime.now(tz=ZoneInfo('Europe/London'))
 London = (LondonOffice.strftime("%H:%M:%S on %B %d"))
 London_AM_PM = (LondonOffice.strftime("%I %p"))
 
-# Calculating before 09 AM in each time zone or after 05PM in each time zone:
-Portland_HourONLY = (PortlandHQ.strftime("%I %p"))
-NYC_HourONLY = (NYC.strftime("%I %p"))
-London_HourONLY = (LondonOffice.strftime("%I %p"))
-
-
-for t in range(1, 8): Closed_before9AM = "CLOSED"
-for t in range(9, 18): Open_between9and5 = "OPEN"
-for t in range(17, 25): Closed_after5PM = "CLOSED"
-
-
-# Loop to check for between 09 AM and 05 PM:
-if PortlandHQ.strftime("%H") == t in range(1,9):
-    print("Portland is CLOSED")
-elif PortlandHQ.strftime("%H") == t in range(9,18):
-    print("Portland is OPEN")
+# Then, compare that time with each branch's hours to see if they are open or closed by checking for if between 9 AM and 5 PM:
+if int(PortlandHQ.strftime("%H")) < 9:
+    Port_open_close = "CLOSED"
+elif int(PortlandHQ.strftime("%H")) >= 18:
+    Port_open_close = "CLOSED"
 else:
-    print("It is after 5pm in Portland")
+    Port_open_close = "OPEN"
 
 
-if NYC.strftime("%H") == t in range(1,9):
-    print("It is before 9am in New York")
-elif PortlandHQ.strftime("%H") == t in range(9,18):
-    print("New York is OPEN")
+if int(NYC.strftime("%H")) < 9:
+    NYC_open_close = "CLOSED"
+elif int(NYC.strftime("%H")) >= 18:
+    NYC_open_close = "CLOSED"
 else:
-    print("It is after 5pm in New York")
+    NYC_open_close = "OPEN"
 
 
-
+if int(LondonOffice.strftime("%H")) < 9:
+    London_open_close = "CLOSED"
+elif int(NYC.strftime("%H")) >= 18:
+    London_open_close = "CLOSED"
+else:
+    London_open_close = "OPEN"
 
 
 # Print out to the screen the three branches and whether they are open or closed.
 print("\nAll of our branches are open from 9 AM to 5 PM in their respective time zones.")
 
 print("\nOn a 24 hour clock, the time at headquarters in Portland, Oregon, is currently: ", PortlandHour_Minute)
-print("Portland HQ is " + " now, because it is currently " + Portland_AM_PM + " there.")
+print("Portland HQ is " + Port_open_close + " now, because it is currently " + Portland_AM_PM + " there.")
 
 print("\nOn a 24 hour clock, the time in New York City is currently: ", NewYorkCity)
-print("The branch in NYC is " + " now, because it is currently " + NewYork_AM_PM + " there.")
+print("The branch in NYC is " + NYC_open_close + " now, because it is currently " + NewYork_AM_PM + " there.")
 
-print("\nThe current time in London is: ", London)
-print("The London branch is " + " now, because it is currently " + London_AM_PM + " there.")
+print("\nOn a 24 hour clock, the current time in London is: ", London)
+print("The London branch is " + London_open_close + " now, because it is currently " + London_AM_PM + " there.")
 
 # HELPFUL LINK:   https://www.w3schools.com/python/python_datetime.asp
