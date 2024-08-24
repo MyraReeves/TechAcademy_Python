@@ -13,15 +13,46 @@ from zoneinfo import ZoneInfo
 # Create a script that will find out the current times in the Portland HQ and NYC and London branches. Then, compare that time with each branch's hours to see if they are open or closed.
 PortlandHQ = datetime.now()
 PortlandHour_Minute = (PortlandHQ.strftime("%H:%M:%S on %B %d"))
-Portland_AM_PM = (PortlandHQ.strftime("%I:%M %p"))
+Portland_AM_PM = (PortlandHQ.strftime("%I %p"))
 
 NYC = datetime.now(tz=ZoneInfo('America/New_York'))
 NewYorkCity = (NYC.strftime("%H:%M:%S on %B %d"))
-NewYork_AM_PM = (NYC.strftime("%I:%M %p"))
+NewYork_AM_PM = (NYC.strftime("%I %p"))
 
 LondonOffice = datetime.now(tz=ZoneInfo('Europe/London'))
 London = (LondonOffice.strftime("%H:%M:%S on %B %d"))
-London_AM_PM = (LondonOffice.strftime("%I:%M %p"))
+London_AM_PM = (LondonOffice.strftime("%I %p"))
+
+# Calculating before 09 AM in each time zone or after 05PM in each time zone:
+Portland_HourONLY = (PortlandHQ.strftime("%I %p"))
+NYC_HourONLY = (NYC.strftime("%I %p"))
+London_HourONLY = (LondonOffice.strftime("%I %p"))
+
+
+for t in range(1, 8): Closed_before9AM = "CLOSED"
+for t in range(9, 18): Open_between9and5 = "OPEN"
+for t in range(17, 25): Closed_after5PM = "CLOSED"
+
+
+# Loop to check for between 09 AM and 05 PM:
+if PortlandHQ.strftime("%H") == t in range(1,9):
+    print("Portland is CLOSED")
+elif PortlandHQ.strftime("%H") == t in range(9,18):
+    print("Portland is OPEN")
+else:
+    print("It is after 5pm in Portland")
+
+
+if NYC.strftime("%H") == t in range(1,9):
+    print("It is before 9am in New York")
+elif PortlandHQ.strftime("%H") == t in range(9,18):
+    print("New York is OPEN")
+else:
+    print("It is after 5pm in New York")
+
+
+
+
 
 # Print out to the screen the three branches and whether they are open or closed.
 print("\nAll of our branches are open from 9 AM to 5 PM in their respective time zones.")
