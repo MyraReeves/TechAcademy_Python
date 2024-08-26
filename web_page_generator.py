@@ -31,7 +31,7 @@ class ParentWindow(Frame):
 
 
     def customPage(self):
-        userCustomText = str(self.customText)
+        userCustomText = str(self.customText.get())
         pageFile = open("index.html", "w")
         pageContent = "<html> \n<body> \n<h1>" + userCustomText + "</h1> \n</body> \n</html>"
 
