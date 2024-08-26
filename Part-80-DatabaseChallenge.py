@@ -45,9 +45,9 @@ with connection:
     cursor = connection.cursor()
 
     # Uses the INSERT INTO SQL statement to insert new records in a table:
-    cursor.execute("INSERT INTO Roster(Name, Species, IQ) VALUES ('Jean-Baptiste Zorg', 'Human', '122')")
-    cursor.execute("INSERT INTO Roster(Name, Species, IQ) VALUES ('Korben Dallas', 'Meat Popsicle', '100')")
-    cursor.execute("INSERT INTO Roster(Name, Species, IQ) VALUES ('Ak''not', 'Mangalore', '-5')")
+    cursor.execute("INSERT INTO Roster(Name, Species, IQ) VALUES ('Jean-Baptiste Zorg', 'Human', '122');")
+    cursor.execute("INSERT INTO Roster(Name, Species, IQ) VALUES ('Korben Dallas', 'Meat Popsicle', '100');")
+    cursor.execute("INSERT INTO Roster(Name, Species, IQ) VALUES ('Ak''not', 'Mangalore', '-5');")
 
     # Commit these changes to the database:
     connection.commit()
@@ -55,11 +55,49 @@ with connection:
 # Now that all desired actions are finished, close the database connection:
 connection.close()
 
+
 # ---------------------------------------------------------------------------------------------------
 # STEP 3: Update the Species of Korben Dallas to be Human.
 
+# To update information within the table, establish a connection to the database...
+connection = sqlite3.connect('Part80_Roster.db')
 
+# While the connection to the database is open...
+with connection:
+
+    # Invokes a cursor variable to operate on the database when we want to execute commands:
+    cursor = connection.cursor()
+
+    # Uses the UPDATE statement to modify the existing records in a table:
+    cursor.execute("UPDATE Roster SET Species = 'Human' WHERE ID = 2;")
+
+    # Commit these changes to the database:
+    connection.commit()
+
+# Now that all desired actions are finished, close the database connection:
+connection.close()
+
+
+# ---------------------------------------------------------------------------------------------------
 # STEP 4: Display the names and IQs of everyone in the table who is classified as Human.
+
+# To extract information from the table, establish a connection to the database...
+connection = sqlite3.connect('Part80_Roster.db')
+
+# While the connection to the database is open...
+with connection:
+
+    # Invoke a cursor variable to operate on the database when we want to execute commands:
+    cursor = connection.cursor()
+
+    # Use the SELECT statement to display data from the database and the WHERE clause to filter which records to display:
+    cursor.execute("SELECT Name, IQ FROM Roster WHERE Species = 'Human';")
+
+    # Commit these changes to the database:
+    # connection.commit()
+
+# Now that all desired actions are finished, close the database connection:
+connection.close()
 
 
 # HELPFUL LINK:  https://www.sqlitetutorial.net/sqlite-python/creating-database/
