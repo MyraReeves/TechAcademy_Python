@@ -92,9 +92,13 @@ with connection:
 
     # Use the SELECT statement to display data from the database and the WHERE clause to filter which records to display:
     cursor.execute("SELECT Name, IQ FROM Roster WHERE Species = 'Human';")
+    
+    # Fetches all rows of a query result and saves it in a variable named "results":
+    results = cursor.fetchall()
 
-    # Commit these changes to the database:
-    # connection.commit()
+    # Prints the results to the console:
+    print(results)
+
 
 # Now that all desired actions are finished, close the database connection:
 connection.close()
